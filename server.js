@@ -34,7 +34,7 @@ app.use(router);
 // Connect MongoDB
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/userDirectory_app';
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Start server
 app.listen(PORT, function() {
