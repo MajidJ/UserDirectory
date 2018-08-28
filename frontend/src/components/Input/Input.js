@@ -5,7 +5,7 @@ class Input extends React.Component {
 		return (
             <input  
                 label={this.props.title} 
-                className="form-control"
+                className={this.props.type === "file" ? ("form-control-file"):("form-control")}
                 placeholder={this.props.title} 
                 name={this.props.name} 
                 type={this.props.type} 

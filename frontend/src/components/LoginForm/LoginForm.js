@@ -74,12 +74,18 @@ class LoginForm extends Component {
                 <div className="card-body">
                     <h3 className="card-title">Login</h3>
                     <form>
-                        <Input title="Email" name="Email" type="text" value={this.state.email} handleInput={this.handleEmailInput}/>
-                        <Input title="Password" name="Password" type="password" value={this.state.password} handleInput={this.handlePasswordInput}/>
-                        <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                        <div className="form-group">
+                            <label htmlFor="emailLoginInput">Email</label>
+                            <Input id="emailLoginInput" title="Email" name="Email" type="text" value={this.state.email} handleInput={this.handleEmailInput}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="passwordLoginInput">Password</label>
+                            <Input id="passwordLoginInput" title="Password" name="Password" type="password" value={this.state.password} handleInput={this.handlePasswordInput}/>
+                        </div>
+                        <button className="btn btn-primary" type="submit" onClick={this.handleSubmit}>Submit</button>
                     </form>
                     {this.state.message ? (
-                        <p>{this.state.messageContent}</p>
+                        <p className="mt-2" style={{color:"red"}}>{this.state.messageContent}</p>
                     ) : (
                         <div></div>
                     )}

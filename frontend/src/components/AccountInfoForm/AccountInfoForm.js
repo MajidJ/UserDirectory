@@ -98,10 +98,19 @@ class AccountInfoForm extends Component {
         return (
             <div className="card">
                 <div className="card-body">
-                    <h3 className="card-title">Account Info</h3>
+                    <div className="row">
+                        <div className="col-sm-9 col-md-10">
+                            <h2 className="card-title">Welcome, {this.state.name}!</h2>
+                        </div>
+                        <div className="col-sm-3 col-md-2">
+                            <button className="btn btn-outline-primary btn-lg" onClick={this.props.logout}>Logout</button>
+                        </div>
+                    </div>
+                    <hr/>
+                    <h3>Account Info</h3>
                     <form>
                         <div className="form-group">
-                            <label htmlFor="imageUploadAccountInput">Upload Image</label>
+                            <label htmlFor="imageUploadAccountInput">Change Thumbnail Image</label>
                             <Input id="imageUploadAccountInput" title="Image" name="Image" type="file" handleInput={this.handleSelectedFileInput}/>
                         </div>
                         <div className="form-group">
@@ -116,11 +125,10 @@ class AccountInfoForm extends Component {
                             <label htmlFor="emailAccountInput">Email Address</label>
                             <Input id="emailAccountInput" title="Email" name="Email" type="email" value={this.state.email} handleInput={this.handleEmailInput}/>
                         </div>
-                        <button onClick={this.handleSubmit}>Update</button>
-                        <button onClick={this.props.logout}>Logout</button>
+                        <button className="btn btn-primary" onClick={this.handleSubmit}>Update</button>
                     </form>
                     {this.state.message ? (
-                        <p>{this.state.messageContent}</p>
+                        <p className="mt-2" style={{color:"red"}}>{this.state.messageContent}</p>
                     ) : (
                         <div></div>
                     )}

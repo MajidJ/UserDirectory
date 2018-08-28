@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm'
 import AccountInfoForm from './components/AccountInfoForm'
 import Wrapper from './components/Wrapper'
 import API from './utils/API';
+import DirectoryCard from './components/DirectoryCard'
 
 class App extends Component {
   state = {
@@ -85,7 +86,9 @@ class App extends Component {
     return (
       <div className="App">
         <Wrapper>
-          <h1>User Directory</h1>
+          <div className="jumbotron">
+            <h1>User Directory</h1>
+          </div>
           {this.state.loggedIn ? (
               <AccountInfoForm
                 logout={this.logout}
@@ -134,21 +137,15 @@ class App extends Component {
           <div className="card">
             <div className="card-body">
               <h3 className="card-title">Directory</h3>
-              <ul>
+              <div className="row">
                 {this.state.users.map(user => (
-                  <li key={'user-' + user._id}>
-                    {user.image ? (	
-                      "THERE'S AN IMAGE"
-                    ) : (
-                      "There is not an image"
-                    )}<br/>
-                    Name: {user.name} <br/>
-                    Description: {user.description} <br/>
-                    Email: {user.email}
-                    <br/>
-                  </li>
+                  <div className="col-md-6 col-lg-4" key={'user-' + user._id}>
+                    <DirectoryCard
+                        userInfo={user}
+                    />
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </Wrapper>
