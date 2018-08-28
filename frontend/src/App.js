@@ -5,7 +5,7 @@ import LoginForm from './components/LoginForm'
 import AccountInfoForm from './components/AccountInfoForm'
 import Wrapper from './components/Wrapper'
 import API from './utils/API';
-import DirectoryCard from './components/DirectoryCard'
+import DirectorySection from './components/DirectorySection'
 
 class App extends Component {
   state = {
@@ -90,18 +90,21 @@ class App extends Component {
             <h1>User Directory</h1>
           </div>
           {this.state.loggedIn ? (
-              <AccountInfoForm
-                logout={this.logout}
-                updateUser={this.updateUser} 
-                userInfo={{
-                  loggedIn: this.state.loggedIn,
-                  email: this.state.email,
-                  name: this.state.name,
-                  description: this.state.description,
-                  userId: this.state.userId,
-                  image: this.state.image
-                }}
-              />
+              <div>
+                <AccountInfoForm
+                  logout={this.logout}
+                  updateUser={this.updateUser} 
+                  userInfo={{
+                    loggedIn: this.state.loggedIn,
+                    email: this.state.email,
+                    name: this.state.name,
+                    description: this.state.description,
+                    userId: this.state.userId,
+                    image: this.state.image
+                  }}
+                />
+                <DirectorySection usersInfo={this.state.users} />
+              </div>
           ):(
               <div className="row">
                 <div className="col-6">
@@ -132,22 +135,6 @@ class App extends Component {
                 </div>
               </div>
           )}
-
-          <br/>
-          <div className="card">
-            <div className="card-body">
-              <h3 className="card-title">Directory</h3>
-              <div className="row">
-                {this.state.users.map(user => (
-                  <div className="col-md-6 col-lg-4" key={'user-' + user._id}>
-                    <DirectoryCard
-                        userInfo={user}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </Wrapper>
       </div>
     );

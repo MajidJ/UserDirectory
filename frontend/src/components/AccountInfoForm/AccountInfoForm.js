@@ -96,7 +96,7 @@ class AccountInfoForm extends Component {
 
 	render() {
         return (
-            <div className="card">
+            <div className="card mb-4">
                 <div className="card-body">
                     <div className="row">
                         <div className="col-sm-9 col-md-10">

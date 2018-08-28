@@ -1,6 +1,6 @@
 import React from 'react';
 
-class DirectoryCard extends React.Component {
+class DirectoryUserCard extends React.Component {
 	render () {
 		return (
             <div className="card mb-4">
@@ -20,4 +20,4 @@ class DirectoryCard extends React.Component {
 	}
 };
 
-export default DirectoryCard; 
+export default DirectoryUserCard; 
