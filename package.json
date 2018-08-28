@@ -3,8 +3,27 @@
   "version": "1.0.0",
   "description": "A simple example of user account profile and directory of users",
   "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "nodemon": "^1.17.5"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'frontend/*'\" \"npm run frontend\"",
+    "frontend": "cd frontend && npm run start",
+    "test": "react-scripts test --env=jsdom",
+    "install": "cd frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -15,13 +34,5 @@
   "bugs": {
     "url": "https://github.com/MajidJ/UserDirectory/issues"
   },
-  "homepage": "https://github.com/MajidJ/UserDirectory#readme",
-  "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "mongoose": "^5.2.10",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
-  }
+  "homepage": "https://github.com/MajidJ/UserDirectory#readme"
 }
