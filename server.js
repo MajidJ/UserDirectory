@@ -5,7 +5,7 @@ const passport = require('passport');
 
 // Setup express app
 const app = express();
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3005;
 
 // Middleware
 if (process.env.NODE_ENV === 'production') {
@@ -21,6 +21,15 @@ const User = require('./models').User;
 
 // Config Passport
 require('./config/passport/passport.js')(passport, User);
+
+// Create User Controller
+const userController = require('./controllers/userController.js')(User);
+
+// Create Router
+const router = require('./routes')(express, passport, userController);
+
+// Use Router
+app.use(router);
 
 // Connect MongoDB
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/userDirectory_app';

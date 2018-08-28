@@ -5,6 +5,9 @@ class Input extends React.Component {
 		return (
             <input  
                 label={this.props.title} 
+                className="form-control"
+                placeholder={this.props.title} 
+                name={this.props.name} 
                 type={this.props.type} 
                 value={this.props.value} 
                 onChange={this.props.handleInput} 
