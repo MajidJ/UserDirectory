@@ -4,7 +4,7 @@ import DirectoryUserCard from '../DirectoryUserCard'
 class DirectorySection extends React.Component {
 	render () {
 		return (
-            <div className="card">
+            <div className="card mb-5">
                 <div className="card-body">
                     <h3 className="card-title">Directory</h3>
                     <div className="row">

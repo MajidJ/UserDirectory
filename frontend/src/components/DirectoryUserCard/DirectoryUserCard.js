@@ -1,16 +1,17 @@
 import React from 'react';
+import ThumbnailPlaceholder from '../../assets/images/thumbnail-placeholder.png'
 
 class DirectoryUserCard extends React.Component {
 	render () {
 		return (
             <div className="card mb-4">
+                {this.props.userInfo.image ? (	
+                    <img className="card-img-top" alt="user thumbnail" src={ThumbnailPlaceholder} />
+                ) : (
+                    <img className="card-img-top" alt="user thumbnail" src={ThumbnailPlaceholder} />
+                )}
                 <div className="card-body">
-                    {this.props.userInfo.image ? (	
-                        "THERE'S AN IMAGE"
-                    ) : (
-                        "There is not an image"
-                    )}<br/>
-                    <b>Name:</b> {this.props.userInfo.name} <br/>
+                    <h5 className="card-title">{this.props.userInfo.name}</h5> <br/>
                     <b>Description:</b> {this.props.userInfo.description} <br/>
                     <b>Email:</b> {this.props.userInfo.email}
                     <br/>
