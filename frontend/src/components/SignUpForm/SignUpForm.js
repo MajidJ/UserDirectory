@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../Input'; 
 import API from '../../utils/API';
+import FileInput from '../FileInput';
 
 
 class SignUpForm extends Component {
@@ -138,7 +139,7 @@ class SignUpForm extends Component {
                     <form>
                         <div className="form-group">
                             <label htmlFor="imageUploadSignUpInput">Upload Image</label>
-                            <Input id="imageUploadSignUpInput" title="Image" name="Image" type="file" handleInput={this.handleSelectedFileInput}/>
+                            <FileInput id="imageUploadSignUpInput" title="Image" name="Image" type="file" handleInput={this.handleSelectedFileInput}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="nameSignupInput">Name</label>

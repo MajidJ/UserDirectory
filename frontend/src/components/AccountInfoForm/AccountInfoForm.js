@@ -117,6 +117,7 @@ class AccountInfoForm extends Component {
                             <Input id="emailAccountInput" title="Email" name="Email" type="email" value={this.state.email} handleInput={this.handleEmailInput}/>
                         </div>
                         <button onClick={this.handleSubmit}>Update</button>
+                        <button onClick={this.props.logout}>Logout</button>
                     </form>
                     {this.state.message ? (
                         <p>{this.state.messageContent}</p>

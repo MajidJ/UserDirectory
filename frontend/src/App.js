@@ -6,8 +6,6 @@ import AccountInfoForm from './components/AccountInfoForm'
 import Wrapper from './components/Wrapper'
 import API from './utils/API';
 
-
-
 class App extends Component {
   state = {
     selectedFile: null,
@@ -87,19 +85,10 @@ class App extends Component {
     return (
       <div className="App">
         <Wrapper>
-          <SignUpForm
-            updateUser={this.updateUser} 
-            userInfo={{
-              loggedIn: this.state.loggedIn,
-              email: this.state.email,
-              name: this.state.name,
-              description: this.state.description,
-              userId: this.state.userId,
-              image: this.state.image
-            }}
-          />
+          <h1>User Directory</h1>
           {this.state.loggedIn ? (
               <AccountInfoForm
+                logout={this.logout}
                 updateUser={this.updateUser} 
                 userInfo={{
                   loggedIn: this.state.loggedIn,
@@ -111,17 +100,34 @@ class App extends Component {
                 }}
               />
           ):(
-              <LoginForm
-                updateUser={this.updateUser} 
-                userInfo={{
-                  loggedIn: this.state.loggedIn,
-                  email: this.state.email,
-                  name: this.state.name,
-                  description: this.state.description,
-                  userId: this.state.userId,
-                  image: this.state.image
-                }}
-              />
+              <div className="row">
+                <div className="col-6">
+                  <SignUpForm
+                    updateUser={this.updateUser} 
+                    userInfo={{
+                      loggedIn: this.state.loggedIn,
+                      email: this.state.email,
+                      name: this.state.name,
+                      description: this.state.description,
+                      userId: this.state.userId,
+                      image: this.state.image
+                    }}
+                  />
+                </div>
+                <div className="col-6">
+                  <LoginForm
+                    updateUser={this.updateUser} 
+                    userInfo={{
+                      loggedIn: this.state.loggedIn,
+                      email: this.state.email,
+                      name: this.state.name,
+                      description: this.state.description,
+                      userId: this.state.userId,
+                      image: this.state.image
+                    }}
+                  />
+                </div>
+              </div>
           )}
 
           <br/>

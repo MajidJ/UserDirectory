@@ -70,17 +70,20 @@ class LoginForm extends Component {
 
 	render() {
         return (
-            <div>
-                <form>
-                    <Input title="Email" name="Email" type="text" value={this.state.email} handleInput={this.handleEmailInput}/>
-                    <Input title="Password" name="Password" type="password" value={this.state.password} handleInput={this.handlePasswordInput}/>
-                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
-                </form>
-                {this.state.message ? (
-                    <p>{this.state.messageContent}</p>
-                ) : (
-                    <div></div>
-                )}
+            <div className="card">
+                <div className="card-body">
+                    <h3 className="card-title">Login</h3>
+                    <form>
+                        <Input title="Email" name="Email" type="text" value={this.state.email} handleInput={this.handleEmailInput}/>
+                        <Input title="Password" name="Password" type="password" value={this.state.password} handleInput={this.handlePasswordInput}/>
+                        <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                    </form>
+                    {this.state.message ? (
+                        <p>{this.state.messageContent}</p>
+                    ) : (
+                        <div></div>
+                    )}
+                </div>
             </div>
         )
 	}
