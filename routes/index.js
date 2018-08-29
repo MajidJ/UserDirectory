@@ -66,7 +66,7 @@ module.exports = function(express, passport, userController){
 	//React App
 	if (process.env.NODE_ENV === 'production') {
 		router.get('*', function(req, res) {
-			res.sendFile(path.join(__dirname, '../client/build/index.html'));
+			res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 		});
 	}
 
