@@ -3,7 +3,7 @@
 ## Description
 An example of user account signup, login, account info management and directory display of users.
 
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+**Table of Contents**
 - [Built With](#built-with)
 - [Installation](#local-installation)
 - [Contributors](#contributors)
@@ -18,7 +18,7 @@ An example of user account signup, login, account info management and directory 
 
 ## Local Installation
 - Ensure you have MongoDB and Node set up before installation!
-1. `git clone https://github.com/Danielthweatt/DonationApp.git` 
+1. `git clone https://github.com/MajidJ/UserDirectory.git` 
 2. Open the repo in your code editor and install the dependencies by typing `npm install` in your terminal
 3. Next, type `npm start` in your terminal - the application should then appear in your browser
 
@@ -26,7 +26,7 @@ An example of user account signup, login, account info management and directory 
 - [Majid Jamaleldine](https://github.com/MajidJ)
 
 ## License
-- [MIT License](https://github.com/Danielthweatt/DonationApp/blob/master/LICENSE)
+- [MIT License](https://github.com/MajidJ/UserDirectory/blob/master/LICENSE)
 
 ## Live Site
 [Heroku](https://user-directory-lp.herokuapp.com/)
