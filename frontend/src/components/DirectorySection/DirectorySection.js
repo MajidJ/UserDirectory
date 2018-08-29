@@ -8,7 +8,7 @@ class DirectorySection extends React.Component {
                 <div className="card-body">
                     <h3 className="card-title">Directory</h3>
                     <div className="row">
-                        {this.props.usersInfo.map(user => (
+                        {this.props.userInfo.users.map(user => (
                         <div className="col-md-6 col-lg-4" key={'user-' + user._id}>
                             <DirectoryUserCard userInfo={user}/>
                         </div>

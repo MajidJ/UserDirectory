@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 // import './App.css';
-import SignUpForm from './components/SignUpForm'
-import LoginForm from './components/LoginForm'
-import AccountInfoForm from './components/AccountInfoForm'
-import Wrapper from './components/Wrapper'
+// import SignUpForm from './components/SignUpForm'
+// import LoginForm from './components/LoginForm'
+// import AccountInfoForm from './components/AccountInfoForm'
+// import Wrapper from './components/Wrapper'
 import API from './utils/API';
-import DirectorySection from './components/DirectorySection'
+// import DirectorySection from './components/DirectorySection'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import { Redirect, Link } from 'react-router-dom';
+import Home from './pages/Home'
+import Dashboard from './pages/Dashboard'
 
 class App extends Component {
   state = {
@@ -84,59 +88,95 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Wrapper>
-          <div className="jumbotron">
-            <h1>User Directory</h1>
-          </div>
-          {this.state.loggedIn ? (
-              <div>
-                <AccountInfoForm
-                  logout={this.logout}
-                  updateUser={this.updateUser} 
-                  userInfo={{
-                    loggedIn: this.state.loggedIn,
-                    email: this.state.email,
-                    name: this.state.name,
-                    description: this.state.description,
-                    userId: this.state.userId,
-                    image: this.state.image
-                  }}
-                />
-                <DirectorySection usersInfo={this.state.users} />
-              </div>
-          ):(
-              <div className="row">
-                <div className="col-6">
-                  <SignUpForm
-                    updateUser={this.updateUser} 
-                    userInfo={{
-                      loggedIn: this.state.loggedIn,
-                      email: this.state.email,
-                      name: this.state.name,
-                      description: this.state.description,
-                      userId: this.state.userId,
-                      image: this.state.image
-                    }}
-                  />
-                </div>
-                <div className="col-6">
-                  <LoginForm
-                    updateUser={this.updateUser} 
-                    userInfo={{
-                      loggedIn: this.state.loggedIn,
-                      email: this.state.email,
-                      name: this.state.name,
-                      description: this.state.description,
-                      userId: this.state.userId,
-                      image: this.state.image
-                    }}
-                  />
-                </div>
-              </div>
-          )}
-        </Wrapper>
+      <div>
+        <Router>
+          <Switch>
+            <Route exact path="/dashboard" render={() =>
+              <Dashboard 
+                updateUser={this.updateUser} 
+                userInfo={{
+                  loggedIn: this.state.loggedIn,
+                  email: this.state.email,
+                  name: this.state.name,
+                  description: this.state.description,
+                  userId: this.state.userId,
+                  users: this.state.users
+                }}
+              />} 
+            />
+            <Route exact path="*" render= {() =>
+              <Home 
+                updateUser={this.updateUser} 
+                userInfo={{
+                  loggedIn: this.state.loggedIn,
+                  email: this.state.email,
+                  name: this.state.name,
+                  description: this.state.description,
+                  userId: this.state.userId
+                }}
+              />} 
+            />
+          </Switch>
+        </Router>
       </div>
+
+
+
+
+
+      // <div className="App">
+      //   <Wrapper>
+      //     <div className="jumbotron">
+      //       <h1>User Directory</h1>
+      //     </div>
+      //     {this.state.loggedIn ? (
+      //         <div>
+      //           <AccountInfoForm
+      //             logout={this.logout}
+      //             updateUser={this.updateUser} 
+      //             userInfo={{
+      //               loggedIn: this.state.loggedIn,
+      //               email: this.state.email,
+      //               name: this.state.name,
+      //               description: this.state.description,
+      //               userId: this.state.userId,
+      //               image: this.state.image
+      //             }}
+      //           />
+      //           <DirectorySection usersInfo={this.state.users} />
+      //         </div>
+      //     ):(
+      //         <div className="row">
+      //           <div className="col-6">
+      //             <SignUpForm
+      //               updateUser={this.updateUser} 
+      //               userInfo={{
+      //                 loggedIn: this.state.loggedIn,
+      //                 email: this.state.email,
+      //                 name: this.state.name,
+      //                 description: this.state.description,
+      //                 userId: this.state.userId,
+      //                 image: this.state.image
+      //               }}
+      //             />
+      //           </div>
+      //           <div className="col-6">
+      //             <LoginForm
+      //               updateUser={this.updateUser} 
+      //               userInfo={{
+      //                 loggedIn: this.state.loggedIn,
+      //                 email: this.state.email,
+      //                 name: this.state.name,
+      //                 description: this.state.description,
+      //                 userId: this.state.userId,
+      //                 image: this.state.image
+      //               }}
+      //             />
+      //           </div>
+      //         </div>
+      //     )}
+      //   </Wrapper>
+      // </div>
     );
   }
 }

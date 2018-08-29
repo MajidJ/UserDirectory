@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import Input from '../Input'; 
+import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
 	state = {
         email: '',
         password: '',
 		message: false,
-		messageContent: ''
+		messageContent: '',
+		redirectTo: null,
     };
 
 	handleEmailInput = e => {
@@ -54,7 +56,10 @@ class LoginForm extends Component {
 							name: response.data.name,
                             description: response.data.description,
                             image: response.data.image
-                		});
+						});
+						// this.setState({
+                    	// 	redirectTo: '/dashboard'
+						// });
 					}
             	}
         	}).catch(err => {
@@ -69,29 +74,35 @@ class LoginForm extends Component {
     }
 
 	render() {
-        return (
-            <div className="card">
-                <div className="card-body">
-                    <h3 className="card-title">Login</h3>
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="emailLoginInput">Email</label>
-                            <Input id="emailLoginInput" title="Email" name="Email" type="text" value={this.state.email} handleInput={this.handleEmailInput}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="passwordLoginInput">Password</label>
-                            <Input id="passwordLoginInput" title="Password" name="Password" type="password" value={this.state.password} handleInput={this.handlePasswordInput}/>
-                        </div>
-                        <button className="btn btn-primary" type="submit" onClick={this.handleSubmit}>Submit</button>
-                    </form>
-                    {this.state.message ? (
-                        <p className="mt-2" style={{color:"red"}}>{this.state.messageContent}</p>
-                    ) : (
-                        <div></div>
-                    )}
-                </div>
-            </div>
-        )
+		if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        } else if (this.props.userInfo.loggedIn) {
+			return <Redirect to={{ pathname: '/dashboard' }} />
+		} else {
+			return (
+				<div className="card">
+					<div className="card-body">
+						<h3 className="card-title">Login</h3>
+						<form>
+							<div className="form-group">
+								<label htmlFor="emailLoginInput">Email</label>
+								<Input id="emailLoginInput" title="Email" name="Email" type="text" value={this.state.email} handleInput={this.handleEmailInput}/>
+							</div>
+							<div className="form-group">
+								<label htmlFor="passwordLoginInput">Password</label>
+								<Input id="passwordLoginInput" title="Password" name="Password" type="password" value={this.state.password} handleInput={this.handlePasswordInput}/>
+							</div>
+							<button className="btn btn-primary" type="submit" onClick={this.handleSubmit}>Submit</button>
+						</form>
+						{this.state.message ? (
+							<p className="mt-2" style={{color:"red"}}>{this.state.messageContent}</p>
+						) : (
+							<div></div>
+						)}
+					</div>
+				</div>
+			)
+		}
 	}
 };
 
