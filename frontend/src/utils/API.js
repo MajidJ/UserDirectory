@@ -27,7 +27,4 @@ export default {
 	imageUpload: function(userId, image){
 		return axios.put(`/user/image/${userId}`, image);
 	},
-	// imageUpload: function(userId, image){
-	// 	return axios.post(`/upload`, image);
-	// },
 }

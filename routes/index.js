@@ -47,6 +47,7 @@ module.exports = function(express, passport, userController){
         userController.uploadImage(req.params.userId, req.body.image);
 	});
 
+	// Commented Code: attempt at using multer upload for single file upload to file collection
 	// router.post('/upload', upload.single('file'), (req, res) => {
 	// 	res.json({ file: req.file });
 	// 	// res.redirect('/');

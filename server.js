@@ -3,11 +3,12 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const Grid = require('gridfs-stream');
-const methodOverride = require('method-override');
-const crypto = require('crypto');
+// Commented Code: Dependecies for GridFS upload for image
+// const multer = require('multer');
+// const GridFsStorage = require('multer-gridfs-storage');
+// const Grid = require('gridfs-stream');
+// const methodOverride = require('method-override');
+// const crypto = require('crypto');
 
 // Setup express app
 const app = express();
@@ -32,12 +33,20 @@ require('./config/passport/passport.js')(passport, User);
 // Create User Controller
 const userController = require('./controllers/userController.js')(User);
 
+// Create Router
+const router = require('./routes')(express, passport, userController);
+
+// Use Router
+app.use(router);
+
 // Connect MongoDB
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/userDirectory_app';
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
-// const conn = mongoose.createConnection(MONGODB_URI, { useNewUrlParser: true });
 
+
+// Commented Code: Attempt at using multer and GridFS for upload 
+// const conn = mongoose.createConnection(MONGODB_URI, { useNewUrlParser: true });
 // // Init gfs
 // let gfs;
 
@@ -67,12 +76,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 // 	}
 // });
 // const upload = multer({ storage });
-
-  // Create Router
-const router = require('./routes')(express, passport, userController);
-
-// Use Router
-app.use(router);
 
 
 // Start server

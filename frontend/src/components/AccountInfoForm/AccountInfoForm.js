@@ -31,7 +31,6 @@ class AccountInfoForm extends Component {
             emailUpdating: this.props.userInfo.email,
             image: this.props.userInfo.image
         });
-        // this.updateAccountInfo();
     }
 
     updateAccountInfo = () => {

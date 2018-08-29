@@ -79,12 +79,15 @@ class SignUpForm extends Component {
 				message: true,
 				messageContent: 'Please re-enter a matching password.'
 			});
+		// Commented Code: removed form validation for removed image upload on signup
 		// } else if (!this.state.selectedFile) {
 		// 	this.setState({
 		// 		message: true,
 		// 		messageContent: 'Please provide an image.'
 		// 	});
 		} else {
+
+			// Commented Code: Attempt and uploading form data image directly to db
 			// const fd = new FormData();
 			// fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
 			// console.log("This is fd: " + fd);
@@ -113,16 +116,6 @@ class SignUpForm extends Component {
 						messageContent: response.data.error
 					});
 				} else {
-					// console.log("Response image data: " + response.data.image, "State image data: " + this.state.selectedFile);
-					
-					// this.props.updateUser({
-					// 	userId: response.data.id,
-					// 	email: response.data.email,
-					// 	name: response.data.name,
-					// 	description: response.data.description,
-					// 	// image: response.data.image
-					// });
-
 					const signInInfo = {
 						email: this.state.email,
 						password: this.state.password
@@ -143,9 +136,6 @@ class SignUpForm extends Component {
 									description: response.data.description,
 									image: response.data.image
 								});
-								// this.setState({
-								// 	redirectTo: '/dashboard'
-								// });
 							}
 						}
 					}).catch(err => {
@@ -161,9 +151,6 @@ class SignUpForm extends Component {
 					this.setState({
 						redirectTo: '/dashboard'
 					});
-					// this.props.updateUser({
-					// 	loggedIn: true
-					// });
 				} 
 			}).catch(error => {
 				this.setState({
@@ -187,6 +174,7 @@ class SignUpForm extends Component {
 					<div className="card-body">
 						<h3 className="card-title">Sign Up</h3>
 						<form>
+							{/* Commented Code: removed image upload on signup */}
 							{/* <div className="form-group">
 								<label htmlFor="imageUploadSignUpInput">Upload Image</label>
 								<Input id="imageUploadSignUpInput" title="Image" name="Image" type="file" handleInput={this.handleSelectedFileInput}/>
