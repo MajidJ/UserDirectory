@@ -84,6 +84,21 @@ class AccountInfoForm extends Component {
         });
     }
 
+    handleUpload = () => {
+        // const fd = new FormData();
+        // fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+        // API.imageUpload(this.state.userId, fd).then(response => {
+        //     console.log(response);
+        // }).catch(err => {
+        //     this.setState({
+        //         message: true,
+        //         messageContent: 'Image save error.'
+        //     });
+        //     console.log('Save error:');
+        //     console.log(err);    
+        // });
+    }
+
 	handleSubmit = event => {
 		event.preventDefault();
 		this.setState({
@@ -170,25 +185,30 @@ class AccountInfoForm extends Component {
                                     }}
                                 />
                             </div>
-                            <form className="col-sm-8">
-                                <div className="form-group">
-                                    <label htmlFor="imageUploadAccountInput">Change Thumbnail Image</label>
-                                    <Input id="imageUploadAccountInput" title="Image" name="Image" type="file" handleInput={this.handleSelectedFileInput}/>
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="nameAccountInput">Name</label>
-                                    <Input id="nameAccountInput" title="Name" name="name" type="text" value={this.state.nameUpdating} handleInput={this.handleNameInput}/>
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="descriptionAccountInput">Description</label>
-                                    <Input id="descriptionAccountInput" title="Description" name="Description" type="text" value={this.state.descriptionUpdating} handleInput={this.handleDescriptionInput}/>
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="emailAccountInput">Email Address</label>
-                                    <Input id="emailAccountInput" title="Email" name="Email" type="email" value={this.state.emailUpdating} handleInput={this.handleEmailInput}/>
-                                </div>
-                                <button className="btn btn-primary" onClick={this.handleSubmit}>Update</button>
-                            </form>
+                            <div className="col-sm-8">
+                                <form className="mb-4">
+                                    <div className="form-group">
+                                        <label htmlFor="imageUploadAccountInput">Change Thumbnail Image</label>
+                                        <Input id="imageUploadAccountInput" title="Image" name="file" type="file" handleInput={this.handleSelectedFileInput}/>
+                                    </div>
+                                    <button className="btn btn-primary" onClick={this.handleUpload}>Upload Image</button>
+                                </form>
+                                <form>
+                                    <div className="form-group">
+                                        <label htmlFor="nameAccountInput">Name</label>
+                                        <Input id="nameAccountInput" title="Name" name="name" type="text" value={this.state.nameUpdating} handleInput={this.handleNameInput}/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="descriptionAccountInput">Description</label>
+                                        <Input id="descriptionAccountInput" title="Description" name="Description" type="text" value={this.state.descriptionUpdating} handleInput={this.handleDescriptionInput}/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="emailAccountInput">Email Address</label>
+                                        <Input id="emailAccountInput" title="Email" name="Email" type="email" value={this.state.emailUpdating} handleInput={this.handleEmailInput}/>
+                                    </div>
+                                    <button className="btn btn-primary" onClick={this.handleSubmit}>Update</button>
+                                </form>
+                            </div>
                             {this.state.message ? (
                                 <p className="mt-2" style={{color:"red"}}>{this.state.messageContent}</p>
                             ) : (

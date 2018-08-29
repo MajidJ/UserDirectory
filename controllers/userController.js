@@ -76,5 +76,25 @@ module.exports = function(User) {
 				}
 			});
         },
+        uploadImage: function(userId, image){
+			User.findOneAndUpdate({ _id: userId }, {
+				$set: {
+                    image: image
+				}
+			}, (err, user) => { 
+				if (err) {
+					res.status(422).send(err);
+				} else if (!user) {
+					res.status(422).send('Something went wrong.');
+				} else {
+					res.send({
+                        name: name,
+                        email: email,
+                        description: description,
+                        image: image
+					});
+				}
+			});
+        },
     }
 }

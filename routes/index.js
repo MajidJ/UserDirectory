@@ -43,6 +43,15 @@ module.exports = function(express, passport, userController){
         userController.updateUserInfo(req.params.userId, req.body.name, req.body.description, req.body.email, res, req.body.image);
 	});
 
+	router.post('/user/image/:userId', function(req, res){
+        userController.uploadImage(req.params.userId, req.body.image);
+	});
+
+	// router.post('/upload', upload.single('file'), (req, res) => {
+	// 	res.json({ file: req.file });
+	// 	// res.redirect('/');
+	// });
+
 	// Sign-out user
 	router.post('/user/signout', (req, res) => {
 		if (req.user) {
