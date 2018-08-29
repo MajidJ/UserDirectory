@@ -8,7 +8,7 @@ const passport = require('passport');
 // const GridFsStorage = require('multer-gridfs-storage');
 // const Grid = require('gridfs-stream');
 // const methodOverride = require('method-override');
-// const crypto = require('crypto');
+// const crypto = require('crypto'); 
 
 // Setup express app
 const app = express();
@@ -20,9 +20,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(methodOverride('_method')); 
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use(methodOverride('_method'));
 
 // User model
 const User = require('./models').User;

@@ -190,7 +190,7 @@ class AccountInfoForm extends Component {
                                         <label htmlFor="imageUploadAccountInput">Change Thumbnail Image</label>
                                         <Input id="imageUploadAccountInput" title="Image" name="file" type="file" handleInput={this.handleSelectedFileInput}/>
                                     </div>
-                                    <button className="btn btn-primary" onClick={this.handleUpload}>Upload Image</button>
+                                    <button disabled className="btn btn-primary" onClick={this.handleUpload}>Upload Image</button>
                                 </form>
                                 <form>
                                     <div className="form-group">
